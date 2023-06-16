@@ -8,7 +8,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="customerid")
-    private int customerId;
+    private Integer customerId;
 
     @Column(name = "firstname")
     private String firstName;
@@ -28,11 +28,11 @@ public class Customer {
     @Column(name = "isdeleted")
     private boolean isDeleted;
 
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 

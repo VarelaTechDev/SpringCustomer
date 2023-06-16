@@ -3,11 +3,10 @@ package com.project.customerproject.Controller;
 import com.project.customerproject.Dao.CustomerRepository;
 import com.project.customerproject.Entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer")
@@ -25,6 +24,23 @@ public class CustomerController {
         }
 
         return customerList;
+    }
+
+    @GetMapping("/{customerId}")
+    public Customer getCustomer(@PathVariable Integer customerId){
+
+        Optional<Customer> customer = customerRepository.findById(customerId);
+
+        if(customer.isPresent()){
+            return customer.get();
+        }
+
+        throw new RuntimeException("Customer not found");
+    }
+
+    @PostMapping()
+    public Customer createCustomer(@RequestBody Customer customer){
+        return customerRepository.save(customer);
     }
 
 
