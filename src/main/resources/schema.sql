@@ -7,14 +7,15 @@ DROP TABLE IF EXISTS `customer`;
 
 # Create the customer table
 CREATE TABLE `customer`(
-                           customerId INT,
-                           FirstName VARCHAR(255),
-                           LastName VARCHAR(255),
-                           CardNumber VARCHAR(255),
-                           CardLimit INT,
-                           CardBalance INT,
-                           PRIMARY KEY(customerId)
+    customerId INT,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255),
+    cardNumber VARCHAR(255),
+    cardLimit INT,
+    cardBalance INT,
+    isDeleted BOOLEAN DEFAULT FALSE,
+    PRIMARY KEY(customerId)
 );
 
-ALTER TABLE customer
-    ADD COLUMN isDeleted BOOLEAN DEFAULT FALSE;
+--  ALTER TABLE customer
+--    ADD COLUMN isDeleted BOOLEAN DEFAULT FALSE;
