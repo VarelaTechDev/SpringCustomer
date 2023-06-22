@@ -38,10 +38,17 @@ public class CustomerController {
         throw new RuntimeException("Customer not found");
     }
 
+
+
     @PostMapping()
     public Customer createCustomer(@RequestBody Customer customer){
         return customerRepository.save(customer);
     }
 
+
+    @DeleteMapping("/{customerId}")
+    public void deleteCustomer(@PathVariable Integer customerId){
+        customerRepository.deleteById(customerId);
+    }
 
 }
